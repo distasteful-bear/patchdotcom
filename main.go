@@ -12,7 +12,7 @@ func main() {
 	r.GET("/", paths.HomePage)
 
 	r.GET("/ping", func(c *gin.Context) {
-		c.Status(200)
+		c.JSON(200, gin.H{"status": "online"})
 	})
 
 	r.Run()
