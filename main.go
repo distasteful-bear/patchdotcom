@@ -15,5 +15,9 @@ func main() {
 		c.JSON(200, gin.H{"status": "online"})
 	})
 
+	r.GET("/*", func(c *gin.Context) {
+		c.HTML(200, "home.html", string[])
+	})
+
 	r.Run()
 }
