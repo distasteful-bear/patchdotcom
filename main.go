@@ -9,6 +9,8 @@ import (
 func main() {
 	r := gin.Default()
 
+	r.Static("/dist", "dist")
+
 	r.GET("/", paths.HomePage)
 
 	r.GET("/ping", func(c *gin.Context) {

@@ -8,7 +8,7 @@ import (
 )
 
 func HomePage(c *gin.Context) {
-	filePath := "html/home.html"
+	filePath := "public/home.html"
 
 	fileContent, err := os.ReadFile(filePath)
 	if err != nil {
