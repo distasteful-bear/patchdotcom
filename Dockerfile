@@ -1,7 +1,7 @@
 FROM alpine:3.19
 
-COPY patchdotcom .
-COPY .src .
+COPY patchdotcom patchdotcom
+COPY ./src ./src
 
 ENV GIN_MODE=release
 ENV PORT=8080
