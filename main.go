@@ -1,6 +1,8 @@
 package main
 
 import (
+	"os"
+
 	"github.com/gin-gonic/gin"
 )
 
@@ -14,5 +16,9 @@ func main() {
 	r.StaticFile("/services", "src/services.html")
 	r.StaticFile("/contact", "src/contact.html")
 
-	r.Run()
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8080"
+	}
+	r.Run(":" + port)
 }
