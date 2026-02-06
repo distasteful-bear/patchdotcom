@@ -1,0 +1,367 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Contact - Patch Solutions</title>
+        <script src="https://unpkg.com/htmx.org@1.9.10"></script>
+        <link rel="stylesheet" href="./src/static/output.css" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&display=swap"
+            rel="stylesheet"
+        />
+        <style>
+            body {
+                font-family: "JetBrains Mono", monospace;
+            }
+        </style>
+    </head>
+    <body class="bg-white text-gray-950 antialiased">
+        <!-- Navigation -->
+        <nav
+            class="sticky top-0 z-50 border-b border-gray-100 bg-white/80 backdrop-blur-sm"
+        >
+            <div
+                class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4"
+            >
+                <a
+                    href="/home"
+                    class="text-xl font-bold tracking-tight text-gray-950"
+                >
+                    Patch Solutions
+                </a>
+                <div class="hidden items-center gap-8 md:flex">
+                    <a
+                        href="/services"
+                        class="text-sm font-medium text-gray-600 transition-colors hover:text-gray-950"
+                        >Services</a
+                    >
+                    <a
+                        href="/contact"
+                        class="rounded-full bg-gray-950 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-gray-800"
+                        >Get a Quote</a
+                    >
+                </div>
+                <button class="md:hidden" id="mobile-menu-btn">
+                    <svg
+                        class="h-6 w-6"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16"
+                        />
+                    </svg>
+                </button>
+            </div>
+            <div
+                class="hidden border-t border-gray-100 md:hidden"
+                id="mobile-menu"
+            >
+                <div class="flex flex-col gap-4 px-6 py-4">
+                    <a
+                        href="/services"
+                        class="text-sm font-medium text-gray-600"
+                        >Services</a
+                    >
+                    <a
+                        href="/contact"
+                        class="rounded-full bg-gray-950 px-4 py-2 text-center text-sm font-medium text-white"
+                        >Get a Quote</a
+                    >
+                </div>
+            </div>
+        </nav>
+
+        <!-- Header -->
+        <section class="mx-auto max-w-7xl px-6 pb-16 pt-16 md:pt-24">
+            <h1
+                class="max-w-3xl text-4xl font-extrabold tracking-tight text-gray-950 md:text-5xl lg:text-6xl"
+            >
+                Let's talk
+            </h1>
+            <p class="mt-6 max-w-2xl text-lg text-gray-600">
+                Tell us about your project and we'll get back to you within one
+                business day.
+            </p>
+        </section>
+
+        <!-- Contact Form -->
+        <section class="border-t border-gray-100">
+            <div class="mx-auto max-w-7xl px-6 py-16 md:py-24">
+                <div class="grid gap-16 lg:grid-cols-2">
+                    <!-- Form -->
+                    <div>
+                        <form class="space-y-6" id="contact-form">
+                            <div class="grid gap-6 sm:grid-cols-2">
+                                <div>
+                                    <label
+                                        for="first-name"
+                                        class="block text-sm font-medium text-gray-950"
+                                        >First name</label
+                                    >
+                                    <input
+                                        type="text"
+                                        name="first-name"
+                                        id="first-name"
+                                        required
+                                        class="mt-2 block w-full rounded-lg border border-gray-300 px-4 py-3 text-gray-950 placeholder-gray-400 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500"
+                                        placeholder="Jane"
+                                    />
+                                </div>
+                                <div>
+                                    <label
+                                        for="last-name"
+                                        class="block text-sm font-medium text-gray-950"
+                                        >Last name</label
+                                    >
+                                    <input
+                                        type="text"
+                                        name="last-name"
+                                        id="last-name"
+                                        required
+                                        class="mt-2 block w-full rounded-lg border border-gray-300 px-4 py-3 text-gray-950 placeholder-gray-400 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500"
+                                        placeholder="Smith"
+                                    />
+                                </div>
+                            </div>
+
+                            <div>
+                                <label
+                                    for="email"
+                                    class="block text-sm font-medium text-gray-950"
+                                    >Email</label
+                                >
+                                <input
+                                    type="email"
+                                    name="email"
+                                    id="email"
+                                    required
+                                    class="mt-2 block w-full rounded-lg border border-gray-300 px-4 py-3 text-gray-950 placeholder-gray-400 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500"
+                                    placeholder="jane@company.com"
+                                />
+                            </div>
+
+                            <div>
+                                <label
+                                    for="company"
+                                    class="block text-sm font-medium text-gray-950"
+                                    >Company</label
+                                >
+                                <input
+                                    type="text"
+                                    name="company"
+                                    id="company"
+                                    class="mt-2 block w-full rounded-lg border border-gray-300 px-4 py-3 text-gray-950 placeholder-gray-400 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500"
+                                    placeholder="Your company name"
+                                />
+                            </div>
+
+                            <div>
+                                <label
+                                    for="service"
+                                    class="block text-sm font-medium text-gray-950"
+                                    >What can we help you with?</label
+                                >
+                                <select
+                                    name="service"
+                                    id="service"
+                                    class="mt-2 block w-full rounded-lg border border-gray-300 px-4 py-3 text-gray-950 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500"
+                                >
+                                    <option value="">Select a service</option>
+                                    <option value="web-app">
+                                        Custom Web Application
+                                    </option>
+                                    <option value="api">
+                                        API Development & Integration
+                                    </option>
+                                    <option value="automation">
+                                        Process Automation
+                                    </option>
+                                    <option value="modernization">
+                                        Legacy System Modernization
+                                    </option>
+                                    <option value="consulting">
+                                        Consulting & Advisory
+                                    </option>
+                                    <option value="other">Other</option>
+                                </select>
+                            </div>
+
+                            <div>
+                                <label
+                                    for="message"
+                                    class="block text-sm font-medium text-gray-950"
+                                    >Tell us about your project</label
+                                >
+                                <textarea
+                                    name="message"
+                                    id="message"
+                                    rows="5"
+                                    required
+                                    class="mt-2 block w-full rounded-lg border border-gray-300 px-4 py-3 text-gray-950 placeholder-gray-400 focus:border-sky-500 focus:outline-none focus:ring-1 focus:ring-sky-500"
+                                    placeholder="Describe your project, goals, and any specific requirements..."
+                                ></textarea>
+                            </div>
+
+                            <div>
+                                <button
+                                    type="submit"
+                                    class="w-full rounded-full bg-gray-950 px-8 py-3 text-sm font-semibold text-white transition-colors hover:bg-gray-800 sm:w-auto"
+                                >
+                                    Send Message
+                                </button>
+                            </div>
+                        </form>
+
+                        <!-- Success Message (hidden by default) -->
+                        <div
+                            id="success-message"
+                            class="hidden rounded-lg bg-green-50 p-6"
+                        >
+                            <div class="flex items-start gap-4">
+                                <svg
+                                    class="h-6 w-6 flex-shrink-0 text-green-500"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        stroke-width="2"
+                                        d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+                                    />
+                                </svg>
+                                <div>
+                                    <h3 class="font-semibold text-green-800">
+                                        Message sent!
+                                    </h3>
+                                    <p class="mt-1 text-green-700">
+                                        Thank you for reaching out. We'll get
+                                        back to you within one business day.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Info -->
+                    <div class="lg:pl-16">
+                        <h2 class="text-lg font-semibold text-gray-950">
+                            Other ways to reach us
+                        </h2>
+                        <p class="mt-4 text-gray-600">
+                            Prefer to reach out directly? You can also contact
+                            us through the following channels.
+                        </p>
+
+                        <dl class="mt-8 space-y-6">
+                            <div>
+                                <dt class="text-sm font-medium text-gray-500">
+                                    Email
+                                </dt>
+                                <dd class="mt-1">
+                                    <a
+                                        href="mailto:hello@patchsolutions.com"
+                                        class="text-gray-950 hover:text-sky-600"
+                                        >hello@patchsolutions.com</a
+                                    >
+                                </dd>
+                            </div>
+                        </dl>
+
+                        <div class="mt-12 rounded-2xl bg-gray-50 p-8">
+                            <h3 class="font-semibold text-gray-950">
+                                What happens next?
+                            </h3>
+                            <ol class="mt-4 space-y-4 text-sm text-gray-600">
+                                <li class="flex gap-4">
+                                    <span
+                                        class="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-sky-100 text-xs font-semibold text-sky-600"
+                                        >1</span
+                                    >
+                                    <span
+                                        >We'll review your request and get back
+                                        to you within one business day.</span
+                                    >
+                                </li>
+                                <li class="flex gap-4">
+                                    <span
+                                        class="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-sky-100 text-xs font-semibold text-sky-600"
+                                        >2</span
+                                    >
+                                    <span
+                                        >We'll schedule a free consultation call
+                                        to discuss your project in detail.</span
+                                    >
+                                </li>
+                                <li class="flex gap-4">
+                                    <span
+                                        class="flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-full bg-sky-100 text-xs font-semibold text-sky-600"
+                                        >3</span
+                                    >
+                                    <span
+                                        >You'll receive a detailed proposal with
+                                        scope, timeline, and pricing.</span
+                                    >
+                                </li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="border-t border-gray-100 bg-gray-50">
+            <div class="mx-auto max-w-7xl px-6 py-12">
+                <div
+                    class="flex flex-col items-center justify-between gap-6 md:flex-row"
+                >
+                    <p class="text-sm text-gray-500">
+                        Patch Solutions. All rights reserved.
+                    </p>
+                    <div class="flex gap-6">
+                        <a
+                            href="/services"
+                            class="text-sm text-gray-500 transition-colors hover:text-gray-700"
+                            >Services</a
+                        >
+                        <a
+                            href="/contact"
+                            class="text-sm text-gray-500 transition-colors hover:text-gray-700"
+                            >Contact</a
+                        >
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <script>
+            // Mobile menu toggle
+            const menuBtn = document.getElementById("mobile-menu-btn");
+            const mobileMenu = document.getElementById("mobile-menu");
+            menuBtn.addEventListener("click", () => {
+                mobileMenu.classList.toggle("hidden");
+            });
+
+            // Form submission handler (demo)
+            const form = document.getElementById("contact-form");
+            const successMessage = document.getElementById("success-message");
+
+            form.addEventListener("submit", (e) => {
+                e.preventDefault();
+                // In production, you would send this to your backend
+                form.classList.add("hidden");
+                successMessage.classList.remove("hidden");
+            });
+        </script>
+    </body>
+</html>

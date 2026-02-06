@@ -1,21 +1,18 @@
 package main
 
 import (
-	"distasteful-bear/patchdotcom/paths"
-
 	"github.com/gin-gonic/gin"
 )
 
 func main() {
 	r := gin.Default()
 
-	r.Static("/dist", "dist")
+	r.Static("src/static", "./src/static")
 
-	r.GET("/", paths.HomePage)
-
-	r.GET("/ping", func(c *gin.Context) {
-		c.JSON(200, gin.H{"status": "online"})
-	})
+	r.StaticFile("/", "src/home.html")
+	r.StaticFile("/home", "src/home.html")
+	r.StaticFile("/services", "src/services.html")
+	r.StaticFile("/contact", "src/contact.html")
 
 	r.Run()
 }

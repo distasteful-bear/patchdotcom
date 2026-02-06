@@ -1,8 +1,6 @@
 {
   "devDependencies": {
-    "@tailwindcss/cli": "^4.1.18",
-    "init": "^0.1.2",
-    "tailwindcss": "^4.1.18"
+    "@tailwindcss/cli": "^4.1.18"
   },
   "name": "patchdotcom",
   "version": "1.0.0",
@@ -20,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/distasteful-bear/patchdotcom/issues"
   },
-  "homepage": "https://github.com/distasteful-bear/patchdotcom#readme"
+  "homepage": "https://github.com/distasteful-bear/patchdotcom#readme",
+  "dependencies": {
+    "tailwindcss": "^4.1.18"
+  }
 }
