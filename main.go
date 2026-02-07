@@ -63,8 +63,43 @@ func main() {
 
 		subject := "New Contact Form Submission"
 
-		plainTextContent := fmt.Sprintf("A new contact form submission!\n From:\n%s %s\n <%s> - %s.\nCompany:\n %s\n Message:\n%s", form.FirstName, form.LastName, form.Email, form.Service, form.Company, form.Message)
-		htmlContent := fmt.Sprintf("A new contact form submission!<br/> From:<br/>%s %s<br/> <%s> - %s.<br/>Company:<br/> %s<br/> Message:<br/>%s", form.FirstName, form.LastName, form.Email, form.Service, form.Company, form.Message)
+		plainTextContent := fmt.Sprintf(
+			"New Contact Form Submission\n\n"+
+				"Name: %s %s\n"+
+				"Email: %s\n"+
+				"Company: %s\n"+
+				"Service: %s\n\n"+
+				"Message:\n%s",
+			form.FirstName, form.LastName, form.Email, form.Company, form.Service, form.Message,
+		)
+		htmlContent := fmt.Sprintf(`
+			<div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
+				<h2 style="color: #0a0a0a; border-bottom: 2px solid #0ea5e9; padding-bottom: 8px;">New Contact Form Submission</h2>
+				<table style="width: 100%%; border-collapse: collapse; margin-top: 16px;">
+					<tr>
+						<td style="padding: 8px 12px; font-weight: bold; color: #555; width: 100px;">Name</td>
+						<td style="padding: 8px 12px;">%s %s</td>
+					</tr>
+					<tr style="background-color: #f9fafb;">
+						<td style="padding: 8px 12px; font-weight: bold; color: #555;">Email</td>
+						<td style="padding: 8px 12px;"><a href="mailto:%s">%s</a></td>
+					</tr>
+					<tr>
+						<td style="padding: 8px 12px; font-weight: bold; color: #555;">Company</td>
+						<td style="padding: 8px 12px;">%s</td>
+					</tr>
+					<tr style="background-color: #f9fafb;">
+						<td style="padding: 8px 12px; font-weight: bold; color: #555;">Service</td>
+						<td style="padding: 8px 12px;">%s</td>
+					</tr>
+				</table>
+				<div style="margin-top: 24px;">
+					<h3 style="color: #555; margin-bottom: 8px;">Message</h3>
+					<p style="background-color: #f9fafb; padding: 16px; border-radius: 8px; line-height: 1.6;">%s</p>
+				</div>
+			</div>`,
+			form.FirstName, form.LastName, form.Email, form.Email, form.Company, form.Service, form.Message,
+		)
 		message := mail.NewSingleEmail(from, subject, to, plainTextContent, htmlContent)
 
 		client := sendgrid.NewSendClient(os.Getenv("SENDGRID_API_KEY"))
