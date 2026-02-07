@@ -1,6 +1,18 @@
+FROM golang:1.25-alpine AS builder
+
+WORKDIR /app
+
+COPY go.mod go.sum ./
+RUN go mod download
+
+COPY main.go ./
+RUN CGO_ENABLED=0 go build -o patchdotcom
+
 FROM alpine:3.19
 
-COPY patchdotcom patchdotcom
+WORKDIR /app
+
+COPY --from=builder /app/patchdotcom .
 COPY ./src ./src
 
 ENV GIN_MODE=release
