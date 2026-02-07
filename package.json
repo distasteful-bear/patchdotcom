@@ -5,7 +5,7 @@
   "name": "patchdotcom",
   "version": "1.0.0",
   "description": "Patch Solutions LLC Public Website",
-  "main": "index.js",
+  "main": "",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -14,7 +14,7 @@
     "url": "git+https://github.com/distasteful-bear/patchdotcom.git"
   },
   "author": "",
-  "license": "ISC",
+  "license": "",
   "bugs": {
     "url": "https://github.com/distasteful-bear/patchdotcom/issues"
   },
