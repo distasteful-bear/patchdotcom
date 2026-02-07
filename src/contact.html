@@ -98,7 +98,7 @@
                 <div class="grid gap-16 lg:grid-cols-2">
                     <!-- Form -->
                     <div>
-                        <form class="space-y-6" id="contact-form">
+                        <form class="space-y-6" id="contact-form" method="POST">
                             <div class="grid gap-6 sm:grid-cols-2">
                                 <div>
                                     <label
@@ -178,14 +178,17 @@
                                     <option value="web-app">
                                         Custom Web Application
                                     </option>
+                                    <option value="modernization">
+                                        Platform Extension
+                                    </option>
                                     <option value="api">
                                         API Development & Integration
                                     </option>
                                     <option value="automation">
-                                        Process Automation
+                                        Web Scraping & Automation
                                     </option>
                                     <option value="modernization">
-                                        Legacy System Modernization
+                                        Legacy System Integration
                                     </option>
                                     <option value="consulting">
                                         Consulting & Advisory
@@ -298,7 +301,8 @@
                                         >2</span
                                     >
                                     <span
-                                        >We'll schedule a free consultation call
+                                        >If we have capacity for your project,
+                                        we'll schedule a free consultation call
                                         to discuss your project in detail.</span
                                     >
                                 </li>
@@ -356,11 +360,21 @@
             const form = document.getElementById("contact-form");
             const successMessage = document.getElementById("success-message");
 
-            form.addEventListener("submit", (e) => {
+            form.addEventListener("submit", async (e) => {
                 e.preventDefault();
-                // In production, you would send this to your backend
-                form.classList.add("hidden");
-                successMessage.classList.remove("hidden");
+                const data = Object.fromEntries(new FormData(form));
+                try {
+                    const res = await fetch("/contact", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify(data),
+                    });
+                    if (!res.ok) throw new Error("Request failed");
+                    form.classList.add("hidden");
+                    successMessage.classList.remove("hidden");
+                } catch (err) {
+                    alert("Something went wrong. Please try again.");
+                }
             });
         </script>
     </body>
