@@ -1,85 +1,9 @@
+{{ define "services" }}
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Services - Patch Solutions</title>
-        <script src="https://unpkg.com/htmx.org@1.9.10"></script>
-        <link rel="stylesheet" href="./src/static/output.css" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&display=swap"
-            rel="stylesheet"
-        />
-        <style>
-            body {
-                font-family: "JetBrains Mono", monospace;
-            }
-        </style>
-    </head>
+    {{ template "head" }}
     <body class="bg-white text-gray-950 antialiased">
-        <!-- Navigation -->
-        <nav
-            class="sticky top-0 z-50 border-b border-gray-100 bg-white/80 backdrop-blur-sm"
-        >
-            <div
-                class="mx-auto flex max-w-7xl items-center justify-between px-6 py-4"
-            >
-                <a
-                    href="/home"
-                    class="text-xl font-bold tracking-tight text-gray-950"
-                >
-                    Patch Solutions
-                </a>
-                <div class="hidden items-center gap-8 md:flex">
-                    <a
-                        href="/services"
-                        class="text-sm font-medium text-gray-950"
-                        >Services</a
-                    >
-                    <a
-                        href="/contact"
-                        class="rounded-full bg-gray-950 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-gray-800"
-                        >Get a Quote</a
-                    >
-                </div>
-                <button class="md:hidden" id="mobile-menu-btn">
-                    <svg
-                        class="h-6 w-6"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                    >
-                        <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M4 6h16M4 12h16M4 18h16"
-                        />
-                    </svg>
-                </button>
-            </div>
-            <div
-                class="hidden border-t border-gray-100 md:hidden"
-                id="mobile-menu"
-            >
-                <div class="flex flex-col gap-4 px-6 py-4">
-                    <a
-                        href="/services"
-                        class="text-sm font-medium text-gray-950"
-                        >Services</a
-                    >
-                    <a
-                        href="/contact"
-                        class="rounded-full bg-gray-950 px-4 py-2 text-center text-sm font-medium text-white"
-                        >Get a Quote</a
-                    >
-                </div>
-            </div>
-        </nav>
-
-        <!-- Header -->
+        {{ template "hero"}}
         <section class="mx-auto max-w-7xl px-6 pb-16 pt-16 md:pt-24">
             <h1
                 class="max-w-3xl text-4xl font-extrabold tracking-tight text-gray-950 md:text-5xl lg:text-6xl"
@@ -485,58 +409,7 @@
                 </div>
             </div>
         </section>
-
-        <!-- CTA Section -->
-        <section class="border-t border-gray-100 bg-gray-50">
-            <div class="mx-auto max-w-7xl px-6 py-24">
-                <div class="mx-auto max-w-2xl text-center">
-                    <h2 class="text-3xl font-bold tracking-tight text-gray-950">
-                        Not sure what you need?
-                    </h2>
-                    <p class="mt-4 text-lg text-gray-600">
-                        Schedule a free consultation and we'll help you identify
-                        the right solution for your business.
-                    </p>
-                    <a
-                        href="/contact"
-                        class="mt-8 inline-block rounded-full bg-gray-950 px-8 py-3 text-sm font-semibold text-white transition-colors hover:bg-gray-800"
-                        >Get in Touch</a
-                    >
-                </div>
-            </div>
-        </section>
-
-        <!-- Footer -->
-        <footer class="border-t border-gray-100">
-            <div class="mx-auto max-w-7xl px-6 py-12">
-                <div
-                    class="flex flex-col items-center justify-between gap-6 md:flex-row"
-                >
-                    <p class="text-sm text-gray-500">
-                        Patch Solutions. All rights reserved.
-                    </p>
-                    <div class="flex gap-6">
-                        <a
-                            href="/services"
-                            class="text-sm text-gray-500 transition-colors hover:text-gray-700"
-                            >Services</a
-                        >
-                        <a
-                            href="/contact"
-                            class="text-sm text-gray-500 transition-colors hover:text-gray-700"
-                            >Contact</a
-                        >
-                    </div>
-                </div>
-            </div>
-        </footer>
-
-        <script>
-            const menuBtn = document.getElementById("mobile-menu-btn");
-            const mobileMenu = document.getElementById("mobile-menu");
-            menuBtn.addEventListener("click", () => {
-                mobileMenu.classList.toggle("hidden");
-            });
-        </script>
+        {{ template "cta"}} {{ template "footer"}}
     </body>
 </html>
+{{end}}

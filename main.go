@@ -24,12 +24,30 @@ type ContactForm struct {
 func main() {
 	r := gin.Default()
 
-	r.Static("src/static", "./src/static")
+	r.LoadHTMLGlob("src/**/*")
 
-	r.StaticFile("/", "src/home.html")
-	r.StaticFile("/home", "src/home.html")
-	r.StaticFile("/services", "src/services.html")
-	r.StaticFile("/contact", "src/contact.html")
+	r.Static("src/styles", "./src/styles")
+
+	r.GET("/", func(c *gin.Context) {
+	    c.HTML(http.StatusOK, "home", gin.H{
+	        "message": "success",
+	    })
+	})
+	r.GET("/home", func(c *gin.Context) {
+	    c.HTML(http.StatusOK, "home", gin.H{
+	        "message": "success",
+	    })
+	})
+	r.GET("/contact", func(c *gin.Context) {
+	    c.HTML(http.StatusOK, "contact", gin.H{
+	        "message": "success",
+	    })
+	})
+	r.GET("/services", func(c *gin.Context) {
+	    c.HTML(http.StatusOK, "services", gin.H{
+	        "message": "success",
+	    })
+	})
 
 	r.POST("/contact", func(c *gin.Context) {
 		var form ContactForm
@@ -53,13 +71,11 @@ func main() {
 
 		response, err := client.Send(message)
 
-		if err != nil {
+		if err != nil || response.StatusCode != 202 {
 			log.Println(err)
 			c.JSON(http.StatusInternalServerError, gin.H{"message": "An error occurred while sending your message. Please contact us directly with the listed email address."})
 		} else {
 			fmt.Println(response.StatusCode)
-			fmt.Println(response.Body)
-			fmt.Println(response.Headers)
 			c.JSON(http.StatusOK, gin.H{"message": "Thank you for reaching out! We'll be in touch soon."})
 		}
 	})

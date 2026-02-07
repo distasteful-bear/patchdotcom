@@ -1,0 +1,12 @@
+{{ define "404" }}
+<!doctype html>
+<html>
+    {{ template "head" }}
+    <body>
+        {{ template "hero" }}
+        <h1>404 Page Not Found</h1>
+        <button hx-get="/ping" hx-swap="outerHTML">Test Ping</button>
+        {{ template "footer" }}
+    </body>
+</html>
+{{ end }}

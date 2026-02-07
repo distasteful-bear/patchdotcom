@@ -20,4 +20,5 @@ ENV PORT=8080
 
 EXPOSE 8080
 
+# SENDGRID_API_KEY is expected at runtime via: docker run --env-file sendgrid.docker.env
 CMD ["./patchdotcom"]
