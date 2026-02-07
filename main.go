@@ -63,8 +63,8 @@ func main() {
 
 		subject := "New Contact Form Submission"
 
-		plainTextContent := fmt.Sprintf("A new contact form submission!%0A From:%0A%s %s%0A <%s> - %s.%0ACompany:%0A %s%0A Message:%0A%s", form.FirstName, form.LastName, form.Email, form.Service, form.Company, form.Message)
-		htmlContent := fmt.Sprintf("A new contact form submission!%0A From:%0A%s %s%0A <%s> - %s.%0ACompany:%0A %s%0A Message:%0A%s", form.FirstName, form.LastName, form.Email, form.Service, form.Company, form.Message)
+		plainTextContent := fmt.Sprintf("A new contact form submission!\n From:\n%s %s\n <%s> - %s.\nCompany:\n %s\n Message:\n%s", form.FirstName, form.LastName, form.Email, form.Service, form.Company, form.Message)
+		htmlContent := fmt.Sprintf("A new contact form submission!<br/> From:<br/>%s %s<br/> <%s> - %s.<br/>Company:<br/> %s<br/> Message:<br/>%s", form.FirstName, form.LastName, form.Email, form.Service, form.Company, form.Message)
 		message := mail.NewSingleEmail(from, subject, to, plainTextContent, htmlContent)
 
 		client := sendgrid.NewSendClient(os.Getenv("SENDGRID_API_KEY"))
