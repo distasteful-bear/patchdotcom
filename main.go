@@ -58,13 +58,13 @@ func main() {
 
 		log.Printf("Contact form submission: %s %s <%s> - %s", form.FirstName, form.LastName, form.Email, form.Service)
 
-		from := mail.NewEmail("Patch Solutions Contact Form", "website@patch-solutions.com")
-		to := mail.NewEmail("Information", "info@patch-solutions.com")
+		from := mail.NewEmail("Patch Solutions Contact Form", "james.m@patch-solutions.com")
+		to := mail.NewEmail("Information", "james.m@patch-solutions.com")
 
 		subject := "New Contact Form Submission"
 
-		plainTextContent := fmt.Sprintf("A new contact form submission from %s %s <%s> - %s.\nCompany %s\n Message:\n%s", form.FirstName, form.LastName, form.Email, form.Service, form.Company, form.Message)
-		htmlContent := fmt.Sprintf("A new contact form submission from %s %s <%s> - %s.\nCompany %s\n Message:\n%s", form.FirstName, form.LastName, form.Email, form.Service, form.Company, form.Message)
+		plainTextContent := fmt.Sprintf("A new contact form submission!\n From:\n%s %s\n <%s> - %s.\nCompany:\n %s\n Message:\n%s", form.FirstName, form.LastName, form.Email, form.Service, form.Company, form.Message)
+		htmlContent := fmt.Sprintf("A new contact form submission!\n From:\n%s %s\n <%s> - %s.\nCompany:\n %s\n Message:\n%s", form.FirstName, form.LastName, form.Email, form.Service, form.Company, form.Message)
 		message := mail.NewSingleEmail(from, subject, to, plainTextContent, htmlContent)
 
 		client := sendgrid.NewSendClient(os.Getenv("SENDGRID_API_KEY"))
