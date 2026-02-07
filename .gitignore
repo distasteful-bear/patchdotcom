@@ -2,3 +2,4 @@ node_modules/
 patchdotcom
 main
 
+sendgrid.env
